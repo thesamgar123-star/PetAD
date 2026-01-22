@@ -1,24 +1,29 @@
-import java.util.ArrayList;
-
 public class Shelter {
-    private ArrayList<Pet> pets = new ArrayList<>();
+    private int id;
+    private String name;
 
-    public void addPet(Pet pet) {
-        pets.add(pet);
+    public Shelter(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public void showPets() {
-        for (Pet p : pets) {
-            System.out.println(p);
-        }
+
+    public Shelter(String name) {
+        this.name = name;
     }
 
-    public Pet findPetByName(String name) {
-        for (Pet p : pets) {
-            if (p.name.equalsIgnoreCase(name) && !p.isAdopted()) {
-                return p;
-            }
-        }
-        return null;
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    @Override
+    public String toString() {
+        return "Shelter{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

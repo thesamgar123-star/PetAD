@@ -1,26 +1,17 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        DatabaseHandler db = new DatabaseHandler();
 
-        Shelter shelter = new Shelter();
-        shelter.addPet(new Pet("Buddy", 3, "Dog"));
-        shelter.addPet(new Pet("Milo", 2, "Cat"));
+        // WRITE
+        db.addPet("Актос", "Dog", 3);
 
-        System.out.println("Available pets:");
-        shelter.showPets();
+        // READ + SORT
+        db.showSortedPets();
 
-        System.out.print("Enter pet name to adopt: ");
-        String petName = sc.nextLine();
+        // UPDATE
+        db.updatePetAge(1, 6);
 
-        Pet pet = shelter.findPetByName(petName);
-
-        if (pet != null) {
-            Adopter adopter = new Adopter("Alex");
-            adopter.adoptPet(pet);
-        } else {
-            System.out.println("Pet not found or already adopted.");
-        }
+        // DELETE
+        db.deletePet(2);
     }
 }
